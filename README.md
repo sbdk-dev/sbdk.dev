@@ -5,169 +5,110 @@
 ![SBDK.dev](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=flat-square&logo=tailwindcss)
+![MIT License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ## Overview
 
-This is the promotional website for **SBDK.dev** - a local-first data pipeline toolkit that combines DLT, dbt, and DuckDB for enterprise-grade data processing with zero cloud dependencies.
+Professional marketing website for **SBDK.dev** - a local-first data pipeline toolkit combining DLT, dbt, and DuckDB for enterprise-grade data processing with zero cloud dependencies.
 
 ### Key Features
 
-- **SEO/AEO Optimized** - Schema.org structured data, semantic HTML, optimized metadata
-- **Interactive Demos** - Live pipeline visualization and CLI terminal sandbox
-- **Data Visualization** - Beautiful DuckDB query result displays
-- **PLG-Focused** - Product-led growth strategy with self-service onboarding
-- **Performance Optimized** - Next.js 14 with App Router, static generation
-- **Responsive Design** - Mobile-first with Tailwind CSS
+✨ **SEO/AEO Optimized** - Schema.org structured data, semantic HTML, LLM-ready content
+🎬 **Interactive Demos** - Live pipeline visualization, CLI sandbox, data table viewer
+📊 **10 Content Sections** - Problem, solution, capabilities, use cases, comparison, FAQ
+🎨 **Brand System** - Complete logo variants, OG images, design system
+⚡ **Performance** - Next.js 14 App Router, static generation, <500ms load times
+📱 **Responsive** - Mobile-first design, dark mode, accessibility (WCAG AA)
 
-## Tech Stack
-
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Theme**: [next-themes](https://github.com/pacocoursey/next-themes)
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-
-### Installation
+## Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/sbdk-dev/sbdk.dev.git
-cd sbdk.dev
-
 # Install dependencies
 npm install
 
 # Run development server
 npm run dev
+
+# Build for production
+npm run build && npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-### Available Scripts
+## Tech Stack
 
-```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm start        # Start production server
-npm run lint     # Run ESLint
-npm run type-check # Run TypeScript type checking
-```
+| Category | Technology |
+|----------|-----------|
+| **Framework** | [Next.js 14](https://nextjs.org/) (App Router) |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) |
+| **Animations** | [Framer Motion](https://www.framer.com/motion/) |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Theme** | [next-themes](https://github.com/pacocoursey/next-themes) |
 
 ## Project Structure
 
 ```
 sbdk.dev/
-├── app/                    # Next.js App Router pages
-│   ├── layout.tsx         # Root layout with SEO metadata
-│   ├── page.tsx           # Landing page
-│   ├── pricing/           # Pricing page
-│   ├── globals.css        # Global styles
-│   ├── sitemap.ts         # Sitemap generation
-│   └── robots.txt         # Robots.txt
+├── app/                    # Next.js App Router
+│   ├── layout.tsx         # Root layout + SEO metadata
+│   ├── page.tsx           # Landing page (10 sections)
+│   ├── pricing/           # Pricing tiers
+│   └── globals.css        # Global styles
 ├── components/             # React components
-│   ├── PipelineVisualizer.tsx      # Visual pipeline tracer
-│   ├── DataTableViewer.tsx         # DuckDB results display
-│   ├── InteractiveTerminal.tsx     # CLI sandbox
-│   └── ThemeProvider.tsx           # Dark mode provider
-├── lib/                    # Utility functions
-├── public/                 # Static assets
-├── ARCHITECTURE.md         # Detailed architecture documentation
-├── tailwind.config.ts      # Tailwind configuration
-└── next.config.js          # Next.js configuration
+│   ├── PipelineVisualizer.tsx  # Pipeline flow visualization
+│   ├── InteractiveTerminal.tsx # CLI sandbox
+│   ├── DataTableViewer.tsx     # DuckDB results
+│   └── Logo.tsx               # Brand logo
+├── docs/                   # 📚 Documentation
+│   ├── ARCHITECTURE.md    # Technical architecture
+│   ├── DEPLOYMENT.md      # Deployment guides
+│   └── README.md          # Docs index
+├── public/
+│   ├── brand/             # Logo variants & guidelines
+│   ├── favicon.svg        # Site icon
+│   ├── og-image.svg       # Social sharing image
+│   └── llms.txt           # AI crawler file
+└── .github/               # Issue/PR templates
 ```
 
-## Key Components
+## Documentation
 
-### PipelineVisualizer
-Animated visualization showing the DLT → dbt → DuckDB pipeline flow with real-time status indicators.
+📖 **[Full Documentation](docs/)**
 
-### DataTableViewer
-Interactive data table with chart view for displaying DuckDB query results. Supports CSV export and copy functionality.
-
-### InteractiveTerminal
-Simulated CLI terminal that demonstrates SBDK commands with realistic output animations.
-
-## SEO/AEO Optimization
-
-This website implements comprehensive SEO and Answer Engine Optimization (AEO):
-
-### On-Page SEO
-- Semantic HTML5 structure
-- Optimized title tags and meta descriptions
-- Proper heading hierarchy (H1-H6)
-- Internal linking strategy
-- Mobile-first responsive design
-
-### Structured Data
-- Schema.org SoftwareApplication markup
-- JSON-LD for machine-readable data
-- Open Graph for social sharing
-- Twitter Cards for social media
-
-### AEO Strategy
-- FAQ sections with clear Q&A format
-- Concise answers in first paragraphs
-- Bullet points for scannability
-- Code snippets with context
-- Clear problem-solution framing
-
-### Performance
-- Lighthouse score target: 95+
-- Core Web Vitals optimized
-- Static generation where possible
-- Image optimization with next/image
-- Code splitting and lazy loading
-
-## Deployment
-
-### Vercel (Recommended)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sbdk-dev/sbdk.dev)
-
-1. Push to GitHub
-2. Import project in Vercel
-3. Deploy automatically
-
-### Other Platforms
-
-```bash
-# Build for production
-npm run build
-
-# The output will be in .next/ directory
-# Deploy to your preferred hosting platform
-```
-
-## Environment Variables
-
-No environment variables required for basic deployment. Add these for enhanced features:
-
-```env
-# Optional: Analytics
-NEXT_PUBLIC_GA_ID=your-google-analytics-id
-
-# Optional: Custom domain
-NEXT_PUBLIC_SITE_URL=https://sbdk.dev
-```
+- [Architecture & SEO Strategy](docs/ARCHITECTURE.md)
+- [Deployment Guide](docs/DEPLOYMENT.md)
+- [Private Repo Deployment](docs/DEPLOY_PRIVATE_REPO.md)
 
 ## Contributing
 
-This is the promotional website for SBDK. For the main project, see [sbdk-dev/sbdk-dev](https://github.com/sbdk-dev/sbdk-dev).
+Contributions are welcome! Please read our:
 
-Website improvements are welcome! Please:
+- [Contributing Guidelines](CONTRIBUTING.md) - Development setup, PR process, code style
+- [Code of Conduct](CODE_OF_CONDUCT.md) - Community standards
+- [Security Policy](SECURITY.md) - Vulnerability reporting
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+For the main SBDK project, see [sbdk-dev/sbdk-dev](https://github.com/sbdk-dev/sbdk-dev).
+
+## Scripts
+
+```bash
+npm run dev        # Start dev server (localhost:3000)
+npm run build      # Build for production
+npm start          # Start production server
+npm run lint       # Run ESLint
+```
+
+## Deployment
+
+### Railway (Current)
+
+Configured for automatic deployment with:
+- `railway.json` - Build configuration
+- `nixpacks.toml` - Build environment
+- Auto-deploy on push to main branch
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for other platforms (Vercel, Netlify, Cloudflare).
 
 ## License
 
@@ -175,14 +116,11 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 ## Links
 
+- **Live Site**: [sbdk.dev](https://sbdk.dev)
 - **Main Project**: [sbdk-dev/sbdk-dev](https://github.com/sbdk-dev/sbdk-dev)
 - **Documentation**: [GitHub Wiki](https://github.com/sbdk-dev/sbdk-dev/wiki)
-- **Website**: [sbdk.dev](https://sbdk.dev)
-
-## Architecture
-
-For detailed information about the website architecture, SEO strategy, and PLG approach, see [ARCHITECTURE.md](ARCHITECTURE.md).
+- **Brand Assets**: [public/brand/](public/brand/)
 
 ---
 
-Built with ❤️ for the data engineering community
+**Built with ❤️ for the data engineering community**
