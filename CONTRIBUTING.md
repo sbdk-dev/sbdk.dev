@@ -207,19 +207,30 @@ Example:
 sbdk.dev/
 ├── app/                    # Next.js App Router pages
 │   ├── layout.tsx         # Root layout with SEO metadata
-│   ├── page.tsx           # Landing page
+│   ├── page.tsx           # Landing page (10 sections)
 │   ├── pricing/           # Pricing page
 │   └── globals.css        # Global styles
 ├── components/             # Reusable React components
-│   ├── Logo.tsx           # Brand logo component
-│   └── ThemeProvider.tsx  # Dark mode provider
-├── lib/                    # Utility functions
+│   ├── PipelineVisualizer.tsx  # Pipeline flow visualization
+│   ├── InteractiveTerminal.tsx # CLI sandbox
+│   ├── DataTableViewer.tsx     # DuckDB results
+│   ├── Logo.tsx               # Brand logo component
+│   └── ThemeProvider.tsx      # Dark mode provider
+├── docs/                   # 📚 Documentation
+│   ├── ARCHITECTURE.md    # Technical architecture
+│   ├── DEPLOYMENT.md      # Deployment guides
+│   └── README.md          # Docs index
 ├── public/                 # Static assets
-│   ├── favicon.svg        # Favicon
-│   ├── llms.txt          # AI crawler file
-│   └── brand/            # Brand assets
-├── ARCHITECTURE.md         # Detailed architecture docs
+│   ├── brand/             # Logo variants & guidelines
+│   ├── favicon.svg        # Site icon
+│   ├── og-image.svg       # Social sharing image
+│   └── llms.txt           # AI crawler file
+├── .github/                # GitHub templates
+│   ├── ISSUE_TEMPLATE/    # Bug & feature templates
+│   └── PULL_REQUEST_TEMPLATE.md
 ├── CONTRIBUTING.md         # This file
+├── CODE_OF_CONDUCT.md     # Community standards
+├── SECURITY.md            # Security policy
 └── README.md              # Project overview
 ```
 

@@ -176,7 +176,7 @@ export default function HomePage() {
                 step: '01',
                 title: 'Install & Initialize',
                 description: 'One command gets you a complete ETL sandbox with DLT, dbt, and DuckDB integrated.',
-                code: 'pip install sbdk-dev\nsbdk init my-pipeline',
+                code: 'uv pip install sbdk-dev\nsbdk init my-pipeline',
               },
               {
                 step: '02',
@@ -526,7 +526,7 @@ export default function HomePage() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Build <span className="gradient-text">480x Faster?</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+          <p className="text-xl text-gray-900 dark:text-gray-100 mb-8">
             Join data engineers who&apos;ve ditched cloud complexity for local-first simplicity
           </p>
 
@@ -552,7 +552,7 @@ export default function HomePage() {
           </div>
 
           <div className="inline-block bg-gray-900 dark:bg-gray-800 rounded-lg px-6 py-4">
-            <code className="text-green-400 text-lg font-mono">pip install sbdk-dev && sbdk init</code>
+            <code className="text-green-400 text-lg font-mono">uv pip install sbdk-dev && sbdk init</code>
           </div>
         </div>
       </section>
