@@ -521,12 +521,12 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950">
+      <section className="py-20 bg-gradient-to-br from-primary-600 via-accent-600 to-primary-700 dark:from-primary-800 dark:via-accent-800 dark:to-primary-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100">
-            Ready to Build <span className="gradient-text">480x Faster?</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Ready to Build <span className="text-yellow-300">480x Faster?</span>
           </h2>
-          <p className="text-xl text-gray-900 dark:text-gray-100 mb-8">
+          <p className="text-xl text-blue-50 mb-8">
             Join data engineers who&apos;ve ditched cloud complexity for local-first simplicity
           </p>
 
@@ -535,7 +535,7 @@ export default function HomePage() {
               href="https://github.com/sbdk-dev/sbdk-dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-semibold text-lg transition-colors flex items-center gap-2 shadow-xl"
+              className="px-8 py-4 bg-white hover:bg-gray-100 text-primary-700 rounded-lg font-semibold text-lg transition-colors flex items-center gap-2 shadow-xl"
             >
               Get Started Free
               <ArrowRight className="w-5 h-5" />
@@ -544,15 +544,15 @@ export default function HomePage() {
               href="https://github.com/sbdk-dev/sbdk-dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg font-semibold text-lg transition-colors flex items-center gap-2"
+              className="px-8 py-4 bg-transparent hover:bg-white/10 text-white border-2 border-white rounded-lg font-semibold text-lg transition-colors flex items-center gap-2"
             >
               <Github className="w-5 h-5" />
               View Documentation
             </Link>
           </div>
 
-          <div className="inline-block bg-gray-900 dark:bg-gray-800 rounded-lg px-6 py-4">
-            <code className="text-green-400 text-lg font-mono">uv pip install sbdk-dev && sbdk init</code>
+          <div className="inline-block bg-gray-900 dark:bg-black/40 rounded-lg px-6 py-4 border border-white/20">
+            <code className="text-green-300 text-lg font-mono">uv pip install sbdk-dev && sbdk init</code>
           </div>
         </div>
       </section>
