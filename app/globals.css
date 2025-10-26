@@ -25,7 +25,7 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 via-accent-600 to-primary-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-700 via-accent-700 to-primary-700 dark:from-primary-500 dark:via-accent-500 dark:to-primary-500 bg-clip-text text-transparent;
     background-size: 200% auto;
     animation: gradient 4s linear infinite;
   }
