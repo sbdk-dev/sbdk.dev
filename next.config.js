@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'standalone', // For Docker/Railway deployments
   experimental: {
     optimizePackageImports: ['lucide-react']
   },
