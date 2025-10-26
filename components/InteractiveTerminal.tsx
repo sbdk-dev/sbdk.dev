@@ -120,7 +120,7 @@ export default function InteractiveTerminal() {
   }
 
   const handleCopyInstall = async () => {
-    await navigator.clipboard.writeText('pip install sbdk-dev')
+    await navigator.clipboard.writeText('uv pip install sbdk-dev')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -212,7 +212,7 @@ export default function InteractiveTerminal() {
                 ) : (
                   <>
                     <Copy className="w-4 h-4" />
-                    pip install sbdk-dev
+                    uv pip install sbdk-dev
                   </>
                 )}
               </button>
