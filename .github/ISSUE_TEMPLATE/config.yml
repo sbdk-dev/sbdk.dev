@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/sbdk-dev/sbdk.dev/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 🔒 Report a Security Vulnerability
+    url: https://github.com/sbdk-dev/sbdk.dev/security/advisories/new
+    about: Please report security vulnerabilities privately
+  - name: 📚 Main SBDK Project
+    url: https://github.com/sbdk-dev/sbdk-dev
+    about: For issues with the core SBDK toolkit (not the website)

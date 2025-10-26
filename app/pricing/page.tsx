@@ -1,7 +1,8 @@
 'use client'
 
-import { Check, Github, ArrowRight, Sparkles, Building2, Rocket } from 'lucide-react'
+import { Check, Github, ArrowRight, Sparkles, Building2 } from 'lucide-react'
 import Link from 'next/link'
+import { Logo } from '@/components/Logo'
 
 export default function PricingPage() {
   const tiers = [
@@ -79,7 +80,7 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
-              <Rocket className="w-8 h-8 text-primary-600" />
+              <Logo className="w-8 h-8" />
               <span className="text-2xl font-bold">SBDK.dev</span>
             </Link>
 
@@ -260,7 +261,7 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
-              <Rocket className="w-6 h-6 text-primary-600" />
+              <Logo className="w-6 h-6" />
               <span className="font-bold text-lg">SBDK.dev</span>
             </div>
 

@@ -1,0 +1,65 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#0EA5E9;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0F172A"/>
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Grid pattern (subtle) -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E293B" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.3"/>
+
+  <!-- Logo (larger version) -->
+  <g transform="translate(100, 150)">
+    <rect width="100" height="100" rx="18" fill="#0EA5E9"/>
+    <path d="M25 37.5L37.5 25L50 37.5M50 37.5L62.5 25L75 37.5M37.5 62.5L50 75L62.5 62.5"
+          stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="50" cy="50" r="6" fill="white"/>
+  </g>
+
+  <!-- Main heading -->
+  <text x="100" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="800" fill="white">
+    SBDK.dev
+  </text>
+
+  <!-- Tagline -->
+  <text x="100" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="600" fill="#94A3B8">
+    Enterprise Data Pipelines in 30 Seconds
+  </text>
+
+  <!-- Key features -->
+  <g transform="translate(100, 450)">
+    <!-- Feature 1 -->
+    <circle cx="0" cy="0" r="8" fill="#0EA5E9"/>
+    <text x="25" y="8" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#CBD5E1">
+      480x faster setup
+    </text>
+
+    <!-- Feature 2 -->
+    <circle cx="0" cy="50" r="8" fill="#8B5CF6"/>
+    <text x="25" y="58" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#CBD5E1">
+      DLT + dbt + DuckDB
+    </text>
+
+    <!-- Feature 3 -->
+    <circle cx="0" cy="100" r="8" fill="#10B981"/>
+    <text x="25" y="108" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#CBD5E1">
+      Zero cloud dependencies
+    </text>
+  </g>
+
+  <!-- Bottom tag -->
+  <rect x="950" y="550" width="200" height="50" rx="25" fill="#0EA5E9" opacity="0.2"/>
+  <text x="1050" y="582" font-family="system-ui, -apple-system, monospace" font-size="20" font-weight="600" fill="#0EA5E9" text-anchor="middle">
+    OPEN SOURCE
+  </text>
+</svg>

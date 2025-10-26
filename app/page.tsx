@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { ArrowRight, Github, Zap, Database, GitBranch, Shield, Gauge, Workflow, Play } from 'lucide-react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Logo } from '@/components/Logo'
 
 // Simplified integrated demo component
 function IntegratedDemo() {
@@ -246,10 +247,10 @@ export default function HomePage() {
       <nav className="fixed top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Database className="w-8 h-8 text-primary-600" />
+            <Link href="/" className="flex items-center gap-2">
+              <Logo className="w-8 h-8" />
               <span className="text-2xl font-bold">SBDK.dev</span>
-            </div>
+            </Link>
 
             <div className="hidden md:flex items-center gap-6">
               <Link href="#demo" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">

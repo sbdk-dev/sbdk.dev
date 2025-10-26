@@ -1,0 +1,20 @@
+export function Logo({ className = "w-8 h-8" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="32" height="32" rx="6" fill="#0EA5E9"/>
+      <path
+        d="M8 12L12 8L16 12M16 12L20 8L24 12M12 20L16 24L20 20"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="16" cy="16" r="2" fill="white"/>
+    </svg>
+  )
+}
