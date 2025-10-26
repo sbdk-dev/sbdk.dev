@@ -2,10 +2,10 @@
 nixPkgs = ["nodejs-22_x"]
 
 [phases.install]
-cmds = ["npm ci"]
+cmds = ["npm install"]
 
 [phases.build]
 cmds = ["npm run build"]
 
 [start]
-cmd = "npm start"
+cmd = "node .next/standalone/server.js"
