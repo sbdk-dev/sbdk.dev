@@ -523,7 +523,7 @@ export default function HomePage() {
       {/* Final CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             Ready to Build <span className="gradient-text">480x Faster?</span>
           </h2>
           <p className="text-xl text-gray-900 dark:text-gray-100 mb-8">
