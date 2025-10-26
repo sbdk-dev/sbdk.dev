@@ -75,7 +75,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 z-50">
+      <nav className="fixed top-0 w-full bg-white dark:bg-gray-950 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
@@ -116,7 +116,7 @@ export default function PricingPage() {
                   key={idx}
                   className={`relative p-8 rounded-2xl ${
                     tier.highlighted
-                      ? 'bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950 border-2 border-primary-500 shadow-2xl scale-105'
+                      ? 'bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50 dark:from-blue-950 dark:via-purple-950 dark:to-blue-950 border-2 border-primary-500 shadow-2xl scale-105'
                       : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700'
                   } ${!tier.available ? 'opacity-90' : ''}`}
                 >
@@ -131,7 +131,7 @@ export default function PricingPage() {
 
                   {/* Icon */}
                   <div className="mb-4">
-                    <Icon className={`w-12 h-12 ${tier.highlighted ? 'text-primary-600' : 'text-gray-600 dark:text-gray-400'}`} />
+                    <Icon className={`w-12 h-12 ${tier.highlighted ? 'text-primary-700 dark:text-primary-400' : 'text-gray-600 dark:text-gray-400'}`} />
                   </div>
 
                   {/* Name */}
@@ -154,7 +154,7 @@ export default function PricingPage() {
                         ? 'bg-primary-600 hover:bg-primary-700 text-white'
                         : tier.available
                         ? 'bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white'
-                        : 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
+                        : 'bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-400 cursor-not-allowed'
                     }`}
                     onClick={(e) => {
                       if (!tier.available && tier.ctaLink === '#waitlist') {
