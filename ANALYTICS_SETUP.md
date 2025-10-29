@@ -63,15 +63,51 @@ We use Schema.org JSON-LD markup for better visibility in AI-powered search engi
 
 ## Google Search Console
 
-### Setup Instructions
+### Step-by-Step Setup Instructions
 
-1. Visit [Google Search Console](https://search.google.com/search-console)
-2. Add property for `https://sbdk.dev`
-3. Choose "HTML tag" verification method
-4. Copy the verification code
-5. Replace `YOUR_VERIFICATION_CODE` in `app/layout.tsx:75`
-6. Deploy changes
-7. Click "Verify" in Search Console
+1. **Go to Google Search Console**
+   - Visit [Google Search Console](https://search.google.com/search-console)
+   - Sign in with your Google account
+
+2. **Add Your Property**
+   - Click "Add Property" or "Add a property"
+   - Choose "URL prefix" option
+   - Enter: `https://sbdk.dev`
+   - Click "Continue"
+
+3. **Get Verification Code**
+   - Google will show several verification methods
+   - Select "HTML tag" method
+   - You'll see a meta tag that looks like:
+     ```html
+     <meta name="google-site-verification" content="abc123XYZ..." />
+     ```
+   - Copy ONLY the content value (the part inside quotes after `content=`)
+   - Example: If the tag is `content="abc123XYZ"`, copy `abc123XYZ`
+
+4. **Add Code to Your Site**
+   - Open `app/layout.tsx:75`
+   - Replace `YOUR_VERIFICATION_CODE` with the code you copied
+   - Before:
+     ```tsx
+     <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+     ```
+   - After:
+     ```tsx
+     <meta name="google-site-verification" content="abc123XYZ" />
+     ```
+
+5. **Deploy and Verify**
+   - Commit and push your changes
+   - Wait for deployment to complete
+   - Go back to Google Search Console
+   - Click "Verify" button
+   - Google will check your site and confirm verification
+
+6. **Submit Sitemap**
+   - After verification, go to "Sitemaps" in the left menu
+   - Enter: `sitemap.xml`
+   - Click "Submit"
 
 ### Verification Meta Tag Location
 File: `app/layout.tsx:75`
@@ -83,25 +119,63 @@ File: `app/layout.tsx:75`
 
 ### Setup Instructions
 
-1. **Create Posthog Account**
-   - Sign up at [posthog.com](https://posthog.com)
-   - Create a new project
-   - Copy your Project API Key
+#### 1. Create Posthog Account
+- Sign up at [posthog.com](https://posthog.com)
+- Create a new project
+- Go to Project Settings → Project Variables
+- Copy your **Project API Key** (starts with `phc_`)
 
-2. **Configure Environment Variables**
-   ```bash
-   cp .env.example .env.local
-   ```
+#### 2. Add to GitHub Secrets
 
-   Edit `.env.local` and add:
-   ```env
-   NEXT_PUBLIC_POSTHOG_KEY=phc_your_actual_key_here
-   NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
-   ```
+1. **Go to Repository Settings**
+   - Navigate to your GitHub repository: https://github.com/sbdk-dev/sbdk.dev
+   - Click "Settings" tab
+   - Click "Secrets and variables" → "Actions" in left sidebar
 
-3. **Deploy**
-   - For local development: restart the dev server
-   - For production: add environment variables to your hosting platform
+2. **Add Repository Secrets**
+   Click "New repository secret" and add:
+
+   **Secret 1:**
+   - Name: `NEXT_PUBLIC_POSTHOG_KEY`
+   - Value: Your Posthog API key (e.g., `phc_abc123...`)
+
+   **Secret 2:**
+   - Name: `NEXT_PUBLIC_POSTHOG_HOST`
+   - Value: `https://us.i.posthog.com` (or your Posthog instance URL)
+
+#### 3. Configure Deployment Platform
+
+**For Vercel:**
+1. Go to your project settings: https://vercel.com/[your-account]/sbdk-dev/settings/environment-variables
+2. Add environment variables:
+   - Key: `NEXT_PUBLIC_POSTHOG_KEY` → Value: Your API key
+   - Key: `NEXT_PUBLIC_POSTHOG_HOST` → Value: `https://us.i.posthog.com`
+3. Redeploy your site
+
+**For Netlify:**
+1. Go to Site settings → Environment variables
+2. Add the same variables as above
+3. Redeploy
+
+**For Railway:**
+1. Go to your service → Variables
+2. Add the same variables
+3. Railway will automatically redeploy
+
+#### 4. Local Development (Optional)
+
+For local testing only:
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local`:
+```env
+NEXT_PUBLIC_POSTHOG_KEY=phc_your_actual_key_here
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+```
+
+**Important:** Never commit `.env.local` to git!
 
 ### What's Tracked Automatically
 
