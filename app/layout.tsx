@@ -73,7 +73,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
+        <meta name="google-site-verification" content="8azO2hbWGHs9O-ky3w3k_L-9my11TwpUIF8rTJKJyHM" />
 
         {/* SoftwareApplication Schema */}
         <script
