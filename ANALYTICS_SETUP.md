@@ -145,22 +145,78 @@ File: `app/layout.tsx:75`
 
 #### 3. Configure Deployment Platform
 
-**For Vercel:**
-1. Go to your project settings: https://vercel.com/[your-account]/sbdk-dev/settings/environment-variables
-2. Add environment variables:
-   - Key: `NEXT_PUBLIC_POSTHOG_KEY` → Value: Your API key
-   - Key: `NEXT_PUBLIC_POSTHOG_HOST` → Value: `https://us.i.posthog.com`
-3. Redeploy your site
+**For Vercel (Detailed Steps):**
+
+1. **Navigate to Environment Variables**
+   - Go to your Vercel dashboard: https://vercel.com
+   - Select your project: `sbdk-dev`
+   - Click on "Settings" tab
+   - Click on "Environment Variables" in the left sidebar
+
+2. **Add First Variable - PostHog API Key**
+   - Click "Add New" button
+   - Key: `NEXT_PUBLIC_POSTHOG_KEY`
+   - Value: `phc_x3OrNNG8NNa6N6JyMLtCn1OKBAezkye5Xkn8c1NlSWc` (or your key from PostHog)
+   - Environment: Check ✅ "Production" (and optionally Preview and Development)
+   - Click "Save"
+
+3. **Add Second Variable - PostHog Host**
+   - Click "Add New" button again
+   - Key: `NEXT_PUBLIC_POSTHOG_HOST`
+   - Value: `https://us.i.posthog.com`
+   - Environment: Check ✅ "Production" (and optionally Preview and Development)
+   - Click "Save"
+
+4. **Redeploy Your Site**
+   - Go to "Deployments" tab
+   - Click the three dots (⋮) on your latest deployment
+   - Select "Redeploy"
+   - Or simply push a new commit to trigger automatic redeployment
+
+5. **Verify Analytics Are Working**
+   - Visit your live site
+   - Open PostHog dashboard
+   - Go to "Live Events" to see events coming in real-time
+   - You should see `$pageview` events appearing
 
 **For Netlify:**
 1. Go to Site settings → Environment variables
 2. Add the same variables as above
 3. Redeploy
 
-**For Railway:**
-1. Go to your service → Variables
-2. Add the same variables
-3. Railway will automatically redeploy
+**For Railway (RECOMMENDED - Detailed Steps):**
+
+1. **Navigate to Your Service**
+   - Go to your Railway dashboard: https://railway.app
+   - Select your project: `sbdk-dev`
+   - Click on your service (the one running your Next.js app)
+
+2. **Open Variables Tab**
+   - Click on the "Variables" tab
+   - You'll see a list of existing environment variables
+
+3. **Add First Variable - PostHog API Key**
+   - Click "New Variable" or the "+ Add Variable" button
+   - Variable Name: `NEXT_PUBLIC_POSTHOG_KEY`
+   - Variable Value: `phc_x3OrNNG8NNa6N6JyMLtCn1OKBAezkye5Xkn8c1NlSWc`
+   - Press Enter or click "Add"
+
+4. **Add Second Variable - PostHog Host**
+   - Click "New Variable" or "+ Add Variable" again
+   - Variable Name: `NEXT_PUBLIC_POSTHOG_HOST`
+   - Variable Value: `https://us.i.posthog.com`
+   - Press Enter or click "Add"
+
+5. **Automatic Redeployment**
+   - Railway will automatically redeploy your service when variables are added
+   - Wait for the deployment to complete (watch the deployment logs)
+   - You'll see the build and deploy process in the logs
+
+6. **Verify Analytics Are Working**
+   - Visit your live site (your Railway URL)
+   - Open PostHog dashboard: https://app.posthog.com
+   - Go to "Live Events" to see events coming in real-time
+   - Navigate around your site - you should see `$pageview` events appearing
 
 #### 4. Local Development (Optional)
 
