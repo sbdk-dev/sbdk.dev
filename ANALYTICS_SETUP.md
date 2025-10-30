@@ -184,10 +184,39 @@ File: `app/layout.tsx:75`
 2. Add the same variables as above
 3. Redeploy
 
-**For Railway:**
-1. Go to your service → Variables
-2. Add the same variables
-3. Railway will automatically redeploy
+**For Railway (RECOMMENDED - Detailed Steps):**
+
+1. **Navigate to Your Service**
+   - Go to your Railway dashboard: https://railway.app
+   - Select your project: `sbdk-dev`
+   - Click on your service (the one running your Next.js app)
+
+2. **Open Variables Tab**
+   - Click on the "Variables" tab
+   - You'll see a list of existing environment variables
+
+3. **Add First Variable - PostHog API Key**
+   - Click "New Variable" or the "+ Add Variable" button
+   - Variable Name: `NEXT_PUBLIC_POSTHOG_KEY`
+   - Variable Value: `phc_x3OrNNG8NNa6N6JyMLtCn1OKBAezkye5Xkn8c1NlSWc`
+   - Press Enter or click "Add"
+
+4. **Add Second Variable - PostHog Host**
+   - Click "New Variable" or "+ Add Variable" again
+   - Variable Name: `NEXT_PUBLIC_POSTHOG_HOST`
+   - Variable Value: `https://us.i.posthog.com`
+   - Press Enter or click "Add"
+
+5. **Automatic Redeployment**
+   - Railway will automatically redeploy your service when variables are added
+   - Wait for the deployment to complete (watch the deployment logs)
+   - You'll see the build and deploy process in the logs
+
+6. **Verify Analytics Are Working**
+   - Visit your live site (your Railway URL)
+   - Open PostHog dashboard: https://app.posthog.com
+   - Go to "Live Events" to see events coming in real-time
+   - Navigate around your site - you should see `$pageview` events appearing
 
 #### 4. Local Development (Optional)
 
