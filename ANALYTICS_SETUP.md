@@ -145,12 +145,39 @@ File: `app/layout.tsx:75`
 
 #### 3. Configure Deployment Platform
 
-**For Vercel:**
-1. Go to your project settings: https://vercel.com/[your-account]/sbdk-dev/settings/environment-variables
-2. Add environment variables:
-   - Key: `NEXT_PUBLIC_POSTHOG_KEY` → Value: Your API key
-   - Key: `NEXT_PUBLIC_POSTHOG_HOST` → Value: `https://us.i.posthog.com`
-3. Redeploy your site
+**For Vercel (Detailed Steps):**
+
+1. **Navigate to Environment Variables**
+   - Go to your Vercel dashboard: https://vercel.com
+   - Select your project: `sbdk-dev`
+   - Click on "Settings" tab
+   - Click on "Environment Variables" in the left sidebar
+
+2. **Add First Variable - PostHog API Key**
+   - Click "Add New" button
+   - Key: `NEXT_PUBLIC_POSTHOG_KEY`
+   - Value: `phc_x3OrNNG8NNa6N6JyMLtCn1OKBAezkye5Xkn8c1NlSWc` (or your key from PostHog)
+   - Environment: Check ✅ "Production" (and optionally Preview and Development)
+   - Click "Save"
+
+3. **Add Second Variable - PostHog Host**
+   - Click "Add New" button again
+   - Key: `NEXT_PUBLIC_POSTHOG_HOST`
+   - Value: `https://us.i.posthog.com`
+   - Environment: Check ✅ "Production" (and optionally Preview and Development)
+   - Click "Save"
+
+4. **Redeploy Your Site**
+   - Go to "Deployments" tab
+   - Click the three dots (⋮) on your latest deployment
+   - Select "Redeploy"
+   - Or simply push a new commit to trigger automatic redeployment
+
+5. **Verify Analytics Are Working**
+   - Visit your live site
+   - Open PostHog dashboard
+   - Go to "Live Events" to see events coming in real-time
+   - You should see `$pageview` events appearing
 
 **For Netlify:**
 1. Go to Site settings → Environment variables
