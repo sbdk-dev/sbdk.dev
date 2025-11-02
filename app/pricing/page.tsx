@@ -1,8 +1,16 @@
-'use client'
-
 import { Check, Github, ArrowRight, Sparkles, Building2 } from 'lucide-react'
 import Link from 'next/link'
 import { Logo } from '@/components/Logo'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Pricing',
+  description: 'SBDK.dev pricing - free and open source forever. Team and Enterprise tiers coming soon with collaboration features and advanced support.',
+  openGraph: {
+    title: 'SBDK.dev Pricing - Free Forever',
+    description: 'Start free with our open source data pipeline toolkit. Team and Enterprise tiers coming soon.',
+  },
+}
 
 export default function PricingPage() {
   const tiers = [
@@ -148,24 +156,23 @@ export default function PricingPage() {
                   </div>
 
                   {/* CTA */}
-                  <Link
-                    href={tier.ctaLink}
-                    className={`block w-full py-3 px-6 rounded-lg font-semibold text-center transition-colors mb-8 ${
-                      tier.highlighted
-                        ? 'bg-primary-600 hover:bg-primary-700 text-white'
-                        : tier.available
-                        ? 'bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white'
-                        : 'bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-400 cursor-not-allowed'
-                    }`}
-                    onClick={(e) => {
-                      if (!tier.available && tier.ctaLink === '#waitlist') {
-                        e.preventDefault()
-                      }
-                    }}
-                  >
-                    {tier.cta}
-                    {tier.available && <ArrowRight className="inline-block ml-2 w-4 h-4" />}
-                  </Link>
+                  {tier.available ? (
+                    <Link
+                      href={tier.ctaLink}
+                      className={`block w-full py-3 px-6 rounded-lg font-semibold text-center transition-colors mb-8 ${
+                        tier.highlighted
+                          ? 'bg-primary-600 hover:bg-primary-700 text-white'
+                          : 'bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white'
+                      }`}
+                    >
+                      {tier.cta}
+                      <ArrowRight className="inline-block ml-2 w-4 h-4" />
+                    </Link>
+                  ) : (
+                    <div className="block w-full py-3 px-6 rounded-lg font-semibold text-center mb-8 bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-400 cursor-not-allowed">
+                      {tier.cta}
+                    </div>
+                  )}
 
                   {/* Features */}
                   <ul className="space-y-3">

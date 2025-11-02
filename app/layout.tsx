@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description: 'Local-first data pipeline toolkit. 480x faster than traditional stacks, zero cloud dependencies.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'SBDK.dev - Local-first Data Pipeline Toolkit',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SBDK.dev - Enterprise Data Pipelines in 30 Seconds',
     description: '480x faster setup, zero cloud dependencies. DLT + dbt + DuckDB in one toolkit.',
-    images: ['/og-image.png'],
+    images: ['/og-image.svg'],
   },
   alternates: {
     canonical: 'https://sbdk.dev',
