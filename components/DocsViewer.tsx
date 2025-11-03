@@ -41,16 +41,20 @@ export default function DocsViewer() {
       setError(null)
 
       try {
-        // Fetch from GitHub Wiki raw URL
-        const url = `https://raw.githubusercontent.com/wiki/sbdk-dev/sbdk-dev/${selectedDoc.slug}.md`
-        const response = await fetch(url)
+        // Fetch from our API route (server-side proxy to avoid CORS)
+        const response = await fetch(`/api/docs?slug=${selectedDoc.slug}`)
 
         if (!response.ok) {
           throw new Error('Failed to fetch documentation')
         }
 
-        const text = await response.text()
-        setContent(text)
+        const data = await response.json()
+
+        if (data.error) {
+          throw new Error(data.error)
+        }
+
+        setContent(data.content)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load documentation')
         setContent('')
