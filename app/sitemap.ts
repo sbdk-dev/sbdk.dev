@@ -3,6 +3,23 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://sbdk.dev'
 
+  const docPages = [
+    'home',
+    'getting-started',
+    'user-guide',
+    'faq',
+    'architecture',
+    'dlt-pipeline-architecture',
+    'dbt-models',
+    'configuration',
+    'configuration-schema',
+    'api-reference',
+    'server-cli-guide',
+    'build-binary',
+    'ci-cd-guide',
+    'github-release-workflow',
+  ]
+
   return [
     {
       url: baseUrl,
@@ -10,12 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
-    {
-      url: `${baseUrl}/docs`,
+    ...docPages.map(slug => ({
+      url: `${baseUrl}/docs/${slug}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
+      changeFrequency: 'weekly' as const,
+      priority: slug === 'home' || slug === 'getting-started' ? 0.9 : 0.8,
+    })),
     {
       url: `${baseUrl}/pricing`,
       lastModified: new Date(),
