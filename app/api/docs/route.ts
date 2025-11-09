@@ -12,8 +12,12 @@ export async function GET(request: NextRequest) {
   }
 
   try {
+    // Wiki files are mostly in uppercase format, except for Home.md
+    // Convert slug to uppercase for all pages except Home
+    const wikiSlug = slug === 'Home' ? 'Home' : slug.toUpperCase()
+
     // Fetch from GitHub Wiki raw URL
-    const url = `https://raw.githubusercontent.com/wiki/sbdk-dev/sbdk-dev/${slug}.md`
+    const url = `https://raw.githubusercontent.com/wiki/sbdk-dev/sbdk-dev/${wikiSlug}.md`
     const response = await fetch(url, {
       headers: {
         'User-Agent': 'SBDK.dev Documentation Viewer',
