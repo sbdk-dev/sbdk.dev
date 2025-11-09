@@ -14,6 +14,7 @@ interface DocPage {
 }
 
 const DOC_PAGES: DocPage[] = [
+  { title: 'Home', slug: 'Home', category: 'Overview' },
   { title: 'Getting Started', slug: 'Getting-Started', category: 'Getting Started' },
   { title: 'User Guide', slug: 'User-Guide', category: 'Getting Started' },
   { title: 'FAQ', slug: 'FAQ', category: 'Getting Started' },
@@ -129,18 +130,29 @@ export default function DocsViewer() {
           )}
 
           {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
-              <p className="text-red-800 dark:text-red-200 font-semibold mb-2">Failed to load documentation</p>
-              <p className="text-red-600 dark:text-red-400 text-sm">{error}</p>
-              <a
-                href={`https://github.com/sbdk-dev/sbdk-dev/wiki/${selectedDoc.slug}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-4 text-red-700 dark:text-red-300 hover:text-red-900 dark:hover:text-red-100 font-medium"
-              >
-                View on GitHub instead
-                <ExternalLink className="w-4 h-4" />
-              </a>
+            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6">
+              <p className="text-yellow-800 dark:text-yellow-200 font-semibold mb-2">Documentation Page Not Yet Available</p>
+              <p className="text-yellow-700 dark:text-yellow-300 text-sm mb-4">
+                This documentation page is currently being created. In the meantime, you can:
+              </p>
+              <div className="flex flex-col gap-2">
+                <a
+                  href={`https://github.com/sbdk-dev/sbdk-dev/wiki/${selectedDoc.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-yellow-700 dark:text-yellow-300 hover:text-yellow-900 dark:hover:text-yellow-100 font-medium"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Check the GitHub Wiki for updates
+                </a>
+                <button
+                  onClick={() => setSelectedDoc(DOC_PAGES[0])}
+                  className="inline-flex items-center gap-2 text-yellow-700 dark:text-yellow-300 hover:text-yellow-900 dark:hover:text-yellow-100 font-medium text-left"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  Return to Home page
+                </button>
+              </div>
             </div>
           )}
 
