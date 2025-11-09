@@ -5,6 +5,9 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import rehypeSanitize from 'rehype-sanitize'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeSlug from 'rehype-slug'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { BookOpen, ExternalLink, Loader2 } from 'lucide-react'
 
 interface DocPage {
@@ -174,7 +177,13 @@ export default function DocsViewer() {
             ">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                rehypePlugins={[
+                  rehypeRaw,
+                  rehypeSanitize,
+                  rehypeSlug,
+                  rehypeAutolinkHeadings,
+                  rehypeHighlight
+                ]}
               >
                 {content}
               </ReactMarkdown>
