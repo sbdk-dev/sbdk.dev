@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
@@ -12,32 +14,48 @@ import { BookOpen, ExternalLink, Loader2 } from 'lucide-react'
 
 interface DocPage {
   title: string
-  slug: string
+  wikiSlug: string
+  urlSlug: string
   category: string
 }
 
 const DOC_PAGES: DocPage[] = [
-  { title: 'Home', slug: 'Home', category: 'Overview' },
-  { title: 'Getting Started', slug: 'Getting-Started', category: 'Getting Started' },
-  { title: 'User Guide', slug: 'User-Guide', category: 'Getting Started' },
-  { title: 'FAQ', slug: 'FAQ', category: 'Getting Started' },
-  { title: 'Architecture', slug: 'Architecture', category: 'Architecture' },
-  { title: 'DLT Pipeline Architecture', slug: 'DLT-Pipeline-Architecture', category: 'Architecture' },
-  { title: 'DBT Models', slug: 'DBT-Models', category: 'Architecture' },
-  { title: 'Configuration', slug: 'Configuration', category: 'Configuration' },
-  { title: 'Configuration Schema', slug: 'Configuration-Schema', category: 'Configuration' },
-  { title: 'API Reference', slug: 'API-Reference', category: 'Configuration' },
-  { title: 'Server CLI Guide', slug: 'Server-CLI-Guide', category: 'Advanced Topics' },
-  { title: 'Build Binary', slug: 'Build-Binary', category: 'Advanced Topics' },
-  { title: 'CI/CD Guide', slug: 'CI-CD-Guide', category: 'Advanced Topics' },
-  { title: 'GitHub Release Workflow', slug: 'GitHub-Release-Workflow', category: 'Advanced Topics' },
+  { title: 'Home', wikiSlug: 'Home', urlSlug: 'home', category: 'Overview' },
+  { title: 'Getting Started', wikiSlug: 'Getting-Started', urlSlug: 'getting-started', category: 'Getting Started' },
+  { title: 'User Guide', wikiSlug: 'User-Guide', urlSlug: 'user-guide', category: 'Getting Started' },
+  { title: 'FAQ', wikiSlug: 'FAQ', urlSlug: 'faq', category: 'Getting Started' },
+  { title: 'Architecture', wikiSlug: 'Architecture', urlSlug: 'architecture', category: 'Architecture' },
+  { title: 'DLT Pipeline Architecture', wikiSlug: 'DLT-Pipeline-Architecture', urlSlug: 'dlt-pipeline-architecture', category: 'Architecture' },
+  { title: 'DBT Models', wikiSlug: 'DBT-Models', urlSlug: 'dbt-models', category: 'Architecture' },
+  { title: 'Configuration', wikiSlug: 'Configuration', urlSlug: 'configuration', category: 'Configuration' },
+  { title: 'Configuration Schema', wikiSlug: 'Configuration-Schema', urlSlug: 'configuration-schema', category: 'Configuration' },
+  { title: 'API Reference', wikiSlug: 'API-Reference', urlSlug: 'api-reference', category: 'Configuration' },
+  { title: 'Server CLI Guide', wikiSlug: 'Server-CLI-Guide', urlSlug: 'server-cli-guide', category: 'Advanced Topics' },
+  { title: 'Build Binary', wikiSlug: 'Build-Binary', urlSlug: 'build-binary', category: 'Advanced Topics' },
+  { title: 'CI/CD Guide', wikiSlug: 'CI-CD-Guide', urlSlug: 'ci-cd-guide', category: 'Advanced Topics' },
+  { title: 'GitHub Release Workflow', wikiSlug: 'GitHub-Release-Workflow', urlSlug: 'github-release-workflow', category: 'Advanced Topics' },
 ]
 
-export default function DocsViewer() {
-  const [selectedDoc, setSelectedDoc] = useState<DocPage>(DOC_PAGES[0])
+interface DocsViewerProps {
+  initialSlug: string
+}
+
+export default function DocsViewer({ initialSlug }: DocsViewerProps) {
+  const router = useRouter()
+  const [selectedDoc, setSelectedDoc] = useState<DocPage>(
+    DOC_PAGES.find(doc => doc.wikiSlug === initialSlug) || DOC_PAGES[0]
+  )
   const [content, setContent] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Update selected doc when initialSlug changes
+    const doc = DOC_PAGES.find(d => d.wikiSlug === initialSlug)
+    if (doc) {
+      setSelectedDoc(doc)
+    }
+  }, [initialSlug])
 
   useEffect(() => {
     async function fetchDoc() {
@@ -46,7 +64,7 @@ export default function DocsViewer() {
 
       try {
         // Fetch from our API route (server-side proxy to avoid CORS)
-        const response = await fetch(`/api/docs?slug=${selectedDoc.slug}`)
+        const response = await fetch(`/api/docs?slug=${selectedDoc.wikiSlug}`)
 
         if (!response.ok) {
           throw new Error('Failed to fetch documentation')
@@ -58,7 +76,32 @@ export default function DocsViewer() {
           throw new Error(data.error)
         }
 
-        setContent(data.content)
+        // Process content to replace wiki links with semantic URLs
+        let processedContent = data.content
+
+        // Replace wiki-style links like [Text](WIKI_PAGE.md) with [Text](/docs/url-slug)
+        const wikiLinkMap: Record<string, string> = {
+          'USER_GUIDE.md': '/docs/user-guide',
+          'USER-GUIDE.md': '/docs/user-guide',
+          'API_REFERENCE.md': '/docs/api-reference',
+          'API-REFERENCE.md': '/docs/api-reference',
+          'DEVELOPER_GUIDE.md': 'https://github.com/sbdk-dev/sbdk-dev/blob/main/CONTRIBUTING.md',
+          'FAQ.md': '/docs/faq',
+          'ARCHITECTURE.md': '/docs/architecture',
+          'CONFIGURATION.md': '/docs/configuration',
+          'GETTING-STARTED.md': '/docs/getting-started',
+          'Home.md': '/docs/home',
+        }
+
+        Object.entries(wikiLinkMap).forEach(([wikiLink, targetUrl]) => {
+          const regex = new RegExp(`\\]\\(${wikiLink}\\)`, 'g')
+          processedContent = processedContent.replace(regex, `](${targetUrl})`)
+        })
+
+        // Replace https://docs.sbdk.dev with https://sbdk.dev/docs
+        processedContent = processedContent.replace(/https:\/\/docs\.sbdk\.dev/g, 'https://sbdk.dev/docs')
+
+        setContent(processedContent)
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load documentation')
         setContent('')
@@ -91,17 +134,17 @@ export default function DocsViewer() {
                 </h4>
                 <ul className="space-y-1">
                   {categoryDocs.map(doc => (
-                    <li key={doc.slug}>
-                      <button
-                        onClick={() => setSelectedDoc(doc)}
-                        className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
-                          selectedDoc.slug === doc.slug
+                    <li key={doc.wikiSlug}>
+                      <Link
+                        href={`/docs/${doc.urlSlug}`}
+                        className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
+                          selectedDoc.wikiSlug === doc.wikiSlug
                             ? 'bg-primary-50 dark:bg-primary-950 text-primary-700 dark:text-primary-300 font-medium'
                             : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                         }`}
                       >
                         {doc.title}
-                      </button>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -111,7 +154,7 @@ export default function DocsViewer() {
 
           <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
             <a
-              href={`https://github.com/sbdk-dev/sbdk-dev/wiki/${selectedDoc.slug}`}
+              href={`https://github.com/sbdk-dev/sbdk-dev/wiki/${selectedDoc.wikiSlug}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
@@ -138,7 +181,7 @@ export default function DocsViewer() {
               <p className="text-red-600 dark:text-red-400 text-sm mb-4">{error}</p>
               <div className="flex flex-col gap-2">
                 <a
-                  href={`https://github.com/sbdk-dev/sbdk-dev/wiki/${selectedDoc.slug}`}
+                  href={`https://github.com/sbdk-dev/sbdk-dev/wiki/${selectedDoc.wikiSlug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-red-700 dark:text-red-300 hover:text-red-900 dark:hover:text-red-100 font-medium"
@@ -146,13 +189,13 @@ export default function DocsViewer() {
                   <ExternalLink className="w-4 h-4" />
                   View on GitHub instead
                 </a>
-                <button
-                  onClick={() => setSelectedDoc(DOC_PAGES[0])}
+                <Link
+                  href="/docs/home"
                   className="inline-flex items-center gap-2 text-red-700 dark:text-red-300 hover:text-red-900 dark:hover:text-red-100 font-medium text-left"
                 >
                   <BookOpen className="w-4 h-4" />
                   Return to Home page
-                </button>
+                </Link>
               </div>
             </div>
           )}
