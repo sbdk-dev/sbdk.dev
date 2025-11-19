@@ -101,14 +101,14 @@ npm run lint       # Run ESLint
 
 ## Deployment
 
-### Railway (Current)
+### Vercel (Current)
 
 Configured for automatic deployment with:
-- `railway.json` - Build configuration
-- `nixpacks.toml` - Build environment
+- `vercel.json` - Build configuration and security headers
 - Auto-deploy on push to main branch
+- Next.js framework auto-detection
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for other platforms (Vercel, Netlify, Cloudflare).
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for deployment instructions and other platforms (Netlify, Cloudflare).
 
 ## License
 
