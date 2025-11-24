@@ -10,7 +10,7 @@ The SBDK team takes the security of our software and services seriously. If you 
 
 Instead, please report security vulnerabilities by emailing:
 
-**security@sbdk.dev**
+**Open a [GitHub Issue](https://github.com/sbdk-dev/sbdk.dev/issues)** or **[Security Advisory](https://github.com/sbdk-dev/sbdk.dev/security/advisories/new)**
 
 If you prefer, you can also report via:
 - Opening a [private security advisory](https://github.com/sbdk-dev/sbdk.dev/security/advisories/new) on GitHub
@@ -40,21 +40,16 @@ After you submit a vulnerability report:
 
 ### Response Timeline
 
-- **Critical vulnerabilities**: Patched within 7 days
-- **High severity**: Patched within 14 days
-- **Medium severity**: Patched within 30 days
-- **Low severity**: Addressed in next regular release
+**Note**: As this project is now archived as a reference implementation, active security patching is not guaranteed. However, we will review reported vulnerabilities and may provide fixes for critical issues.
 
 ## Supported Versions
 
-We provide security updates for the following versions:
-
 | Version | Supported          |
 | ------- | ------------------ |
-| Latest  | ✅ Yes             |
+| Latest  | ⚠️ Archived (reference only) |
 | Older   | ❌ No              |
 
-The SBDK.dev website is continuously deployed from the main branch. We recommend always using the latest version.
+This project is archived as a reference implementation (November 2025). For active projects, consider forking and maintaining your own security updates.
 
 ## Security Best Practices
 

@@ -156,7 +156,7 @@ File: `app/layout.tsx:75`
 2. **Add First Variable - PostHog API Key**
    - Click "Add New" button
    - Key: `NEXT_PUBLIC_POSTHOG_KEY`
-   - Value: `phc_x3OrNNG8NNa6N6JyMLtCn1OKBAezkye5Xkn8c1NlSWc` (or your key from PostHog)
+   - Value: Your PostHog API key (starts with `phc_`, e.g., `phc_abc123...`)
    - Environment: Check ✅ "Production" (and optionally Preview and Development)
    - Click "Save"
 
@@ -198,7 +198,7 @@ File: `app/layout.tsx:75`
 3. **Add First Variable - PostHog API Key**
    - Click "New Variable" or the "+ Add Variable" button
    - Variable Name: `NEXT_PUBLIC_POSTHOG_KEY`
-   - Variable Value: `phc_x3OrNNG8NNa6N6JyMLtCn1OKBAezkye5Xkn8c1NlSWc`
+   - Variable Value: Your PostHog API key (starts with `phc_`)
    - Press Enter or click "Add"
 
 4. **Add Second Variable - PostHog Host**

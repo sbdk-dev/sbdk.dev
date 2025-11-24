@@ -5,21 +5,25 @@ import { PosthogProvider } from '@/components/PosthogProvider'
 
 export const metadata: Metadata = {
   title: {
-    default: 'SBDK.dev - Enterprise Data Pipelines in 30 Seconds',
+    default: 'SBDK.dev - Local-First Data & AI Reference Implementations',
     template: '%s | SBDK.dev'
   },
-  description: 'Local-first data pipeline toolkit with DLT, dbt, and DuckDB. 480x faster setup, zero cloud dependencies, enterprise-grade processing in under 500MB.',
+  description: 'A complete open-source ecosystem for building local-first data and AI tools. Five reference implementations showing how to build data pipelines, ML inference, semantic layers, and AI-powered analytics—all without cloud dependencies.',
   keywords: [
+    'local-first',
     'data pipeline',
+    'AI analytics',
+    'reference implementation',
     'dlt',
     'dbt',
     'duckdb',
-    'local-first',
+    'machine learning',
+    'semantic layer',
     'data engineering',
-    'analytics',
-    'ETL',
     'open source',
-    'developer tools'
+    'developer tools',
+    'MCP',
+    'model context protocol'
   ],
   authors: [{ name: 'SBDK' }],
   creator: 'SBDK',
@@ -40,8 +44,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://sbdk.dev',
     siteName: 'SBDK.dev',
-    title: 'SBDK.dev - Enterprise Data Pipelines in 30 Seconds',
-    description: 'Local-first data pipeline toolkit. 480x faster than traditional stacks, zero cloud dependencies.',
+    title: 'SBDK.dev - Local-First Data & AI Reference Implementations',
+    description: 'Five open-source projects demonstrating how to build a complete local-first analytics stack—from data ingestion to AI-powered insights.',
     images: [
       {
         url: '/og-image.svg',
@@ -53,8 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SBDK.dev - Enterprise Data Pipelines in 30 Seconds',
-    description: '480x faster setup, zero cloud dependencies. DLT + dbt + DuckDB in one toolkit.',
+    title: 'SBDK.dev - Local-First Data & AI Reference Implementations',
+    description: 'Five open-source projects for building local-first analytics: data pipelines, ML inference, semantic layers, and AI-powered analytics.',
     images: ['/og-image.svg'],
   },
   alternates: {
@@ -72,8 +76,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="8azO2hbWGHs9O-ky3w3k_L-9my11TwpUIF8rTJKJyHM" />
+        {/* Google Search Console Verification - Add your own verification code */}
+        {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> */}
 
         {/* SoftwareApplication Schema */}
         <script
@@ -85,7 +89,7 @@ export default function RootLayout({
               name: 'SBDK.dev',
               applicationCategory: 'DeveloperApplication',
               operatingSystem: 'Linux, macOS, Windows',
-              description: 'Local-first data pipeline toolkit integrating DLT, dbt, and DuckDB for enterprise-grade data processing',
+              description: 'A complete ecosystem of open-source reference implementations for building local-first data and AI tools',
               offers: {
                 '@type': 'Offer',
                 price: '0',
@@ -120,7 +124,7 @@ export default function RootLayout({
               sameAs: [
                 'https://github.com/sbdk-dev/sbdk-dev',
               ],
-              description: 'Local-first data pipeline toolkit for enterprise-grade data processing',
+              description: 'Open-source ecosystem for building local-first data and AI tools',
             }),
           }}
         />
@@ -194,6 +198,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-center p-3 text-white">
+              <strong>Open Source Reference Implementations:</strong> Complete, production-quality codebases demonstrating local-first data and AI patterns. MIT Licensed • Fork & Build Your Own
+            </div>
             {children}
           </ThemeProvider>
         </PosthogProvider>

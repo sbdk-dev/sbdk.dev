@@ -1,7 +1,7 @@
 {
   "name": "sbdk.dev",
   "version": "1.0.0",
-  "description": "SEO-optimized promotional website for SBDK - Local-first data pipeline toolkit",
+  "description": "Website and central hub for the SBDK ecosystem of local-first data and AI reference implementations",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -42,16 +42,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://local_proxy@127.0.0.1:30272/git/sbdk-dev/sbdk.dev"
+    "url": "https://github.com/sbdk-dev/sbdk.dev"
   },
   "keywords": [
+    "local-first",
     "data-pipeline",
+    "ai-analytics",
+    "reference-implementation",
     "dlt",
     "dbt",
     "duckdb",
-    "local-first",
-    "analytics",
-    "data-engineering"
+    "machine-learning",
+    "semantic-layer",
+    "data-engineering",
+    "mcp",
+    "model-context-protocol",
+    "open-source",
+    "portfolio"
   ],
   "author": "SBDK",
   "license": "MIT"

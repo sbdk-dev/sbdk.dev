@@ -1,6 +1,8 @@
 # Contributing to SBDK.dev
 
-Thank you for your interest in contributing to the SBDK.dev promotional website! We appreciate your help in making this project better.
+> **Note**: This project is archived as a reference implementation (November 2025). While we welcome bug reports and documentation improvements, for new features or significant changes, we recommend forking the project.
+
+Thank you for your interest in contributing to SBDK.dev! Here's how you can help:
 
 ## Table of Contents
 
@@ -17,35 +19,33 @@ This project and everyone participating in it is governed by our [Code of Conduc
 
 ## How Can I Contribute?
 
-### Reporting Bugs
+### For This Repository (Archived Reference)
 
-Before creating bug reports, please check existing issues to avoid duplicates. When creating a bug report, include:
+Since this is an archived reference implementation, we accept:
 
-- **Clear title and description**
-- **Steps to reproduce** the issue
-- **Expected behavior** vs actual behavior
-- **Screenshots** if applicable
-- **Environment details** (browser, OS, device)
+✅ **Bug Reports** - Critical issues that affect functionality
+✅ **Documentation Improvements** - Clarifications, fixes, better examples
+✅ **Security Issues** - Report via [Security Advisories](https://github.com/sbdk-dev/sbdk.dev/security/advisories/new)
 
-### Suggesting Enhancements
+❌ **New Features** - Consider forking for major additions
+❌ **Breaking Changes** - Fork and create your own version
 
-Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, include:
+### For New Features: Fork & Build Your Own
 
-- **Clear title and description**
-- **Use case** - why this would be useful
-- **Mockups or examples** if applicable
-- **Additional context** or screenshots
+This project is designed to be forked and adapted:
 
-### Pull Requests
+1. **Fork this repository**
+2. **Make your changes** freely
+3. **Share your fork** - Open an issue to showcase what you built!
 
-We actively welcome your pull requests! Areas where you can contribute:
+We encourage you to use this as a starting point for your own projects.
 
-- 🎨 **UI/UX improvements** - Better design, animations, accessibility
-- 📝 **Content updates** - Clearer copy, better examples, documentation
-- 🐛 **Bug fixes** - Fix issues in the issue tracker
-- ⚡ **Performance** - Optimize loading times, bundle size
-- ♿ **Accessibility** - Improve WCAG compliance, keyboard navigation
-- 🌐 **SEO/AEO** - Better metadata, structured data, content optimization
+### Areas Where Contributions Are Welcome
+
+- 🐛 **Bug fixes** - Fix broken functionality
+- 📝 **Documentation** - Improve clarity, fix typos, add examples
+- ♿ **Accessibility** - WCAG compliance improvements
+- 🔒 **Security** - Vulnerability fixes
 
 ## Development Setup
 

@@ -1,0 +1,9 @@
+# Git mailmap to consolidate author identities
+# This makes GitHub display all commits under a single identity
+# without rewriting git history
+
+# Consolidate all identities to matt-strautmann
+matt-strautmann <167921793+matt-strautmann@users.noreply.github.com> Claude <noreply@anthropic.com>
+matt-strautmann <167921793+matt-strautmann@users.noreply.github.com> matt-strautmann <matt.strautmann@gmail.com>
+matt-strautmann <167921793+matt-strautmann@users.noreply.github.com> Matt Strautmann <167921793+matt-strautmann@users.noreply.github.com>
+matt-strautmann <167921793+matt-strautmann@users.noreply.github.com> Matt Strautmann <matt.strautmann@gmail.com>

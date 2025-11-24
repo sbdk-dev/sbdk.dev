@@ -1,556 +1,389 @@
-import { ArrowRight, Github, Zap, Database, GitBranch, Shield, Gauge, Workflow, Clock, Cloud, DollarSign, Code, Check, X, AlertCircle, Users, TrendingUp, Server, HelpCircle } from 'lucide-react'
+'use client'
+
+import { ArrowRight, Github } from 'lucide-react'
 import Link from 'next/link'
 import { Logo } from '@/components/Logo'
-import PipelineVisualizer from '@/components/PipelineVisualizer'
-import DataTableViewer from '@/components/DataTableViewer'
-import InteractiveTerminal from '@/components/InteractiveTerminal'
+import { motion } from 'framer-motion'
 
 export default function HomePage() {
+  const projects = [
+    {
+      name: 'SBDK.dev (Sandbox Development Kit)',
+      repo: 'sbdk-dev/sbdk-dev',
+      description: 'A developer sandbox framework for local-first data pipeline development using DLT, DuckDB, and dbt. It provides a complete local-first environment for prototyping, learning, and developing data solutions before deploying to production systems.',
+      features: [
+        '11x Faster Installation: Lightning-fast installation with `uv`.',
+        '100% Local: No cloud dependencies, no complex setup.',
+        'Intelligent Guided UI: A clean, intuitive interface with actionable options.',
+        'Hot Reload: Automatic re-runs when files change for iterative development.',
+      ],
+    },
+    {
+      name: 'Mallard (local-inference)',
+      repo: 'sbdk-dev/local-inference',
+      description: 'A local-first semantic layer for AI-powered analytics, providing a "Snowflake Cortex for Local-First Databases." It allows you to run powerful, zero-shot tabular predictions directly in your database with simple SQL.',
+      features: [
+        'Zero-Shot Predictions: Use powerful foundation models for classification and regression without training.',
+        'Simple SQL Interface: All functionality is exposed through declarative SQL UDFs.',
+        'High-Performance & Local-First: Built in Rust as a DuckDB extension.',
+        'Embeddings & Explainability: Generate dense vector embeddings and get feature importance explanations.',
+      ],
+    },
+    {
+      name: 'Semantic Tracer',
+      repo: 'sbdk-dev/semantic-tracer',
+      description: 'A local-first application for visualizing and exploring dbt semantic layers. It connects directly to your dbt project and Snowflake account to provide a real-time, interactive lineage graph of your metrics, dimensions, and entities.',
+      features: [
+        'Local-First: Your data and semantic models never leave your machine.',
+        'dbt Semantic Layer Integration: Connects seamlessly to your `semantic_models.yml` file.',
+        'Interactive Lineage Graph: Utilizes React Flow to create a dynamic and explorable graph.',
+        'Tauri Backend: A lightweight Rust backend provides high performance and a secure application shell.',
+      ],
+    },
+    {
+        name: 'Local AI Analyst',
+        repo: 'sbdk-dev/local-ai-analyst',
+        description: 'An AI-powered data analyst with a semantic layer, statistical rigor, and natural language insights. It allows you to ask questions in natural language and get answers based on real query results, not AI guesses.',
+        features: [
+          'Natural Language Queries: Ask questions like "What\'s our conversion rate by plan type?"',
+          'Statistical Rigor: Automatic significance testing, confidence intervals, and sample size validation.',
+          'Execution-First: Prevents AI fabrication by building, executing, and then annotating results.',
+          'Multi-Query Workflows: Built-in analytical workflows for comprehensive analysis.',
+        ],
+      },
+      {
+        name: 'knowDB',
+        repo: 'sbdk-dev/knowDB',
+        description: 'A local-first agentic analytics platform that extends `sbdk-dev` to enable natural language queries against your data through AI assistants like Claude Desktop and ChatGPT Desktop via the Model Context Protocol (MCP).',
+        features: [
+          'Multi-AI Support: Works with any MCP-compatible AI assistant.',
+          'dbt Integration: Sync dbt models to the semantic layer automatically.',
+          'Local-First: Runs entirely on your machine with DuckDB.',
+          'Open Source: MIT License - free for personal and commercial use.',
+        ],
+      },
+  ]
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="fixed top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800 z-50"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
               <Logo className="w-8 h-8" />
               <span className="text-2xl font-bold">SBDK.dev</span>
             </Link>
-
-            <div className="hidden md:flex items-center gap-6">
-              <Link href="#features" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                Features
-              </Link>
-              <Link href="#demo" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                Demo
-              </Link>
-              <Link href="/docs/home" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                Docs
-              </Link>
-              <Link href="/pricing" className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                Pricing
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <Link
-                href="https://github.com/sbdk-dev/sbdk-dev"
+                href="https://github.com/sbdk-dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors font-semibold"
               >
                 <Github className="w-5 h-5" />
-                <span className="hidden sm:inline">Star on GitHub</span>
+                View on GitHub
               </Link>
             </div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
-      {/* Hero Section - Concise, Above the Fold */}
-      <section className="pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 dark:bg-primary-950 rounded-full text-primary-700 dark:text-primary-300 text-sm font-medium mb-6">
-            <Zap className="w-4 h-4" />
-            480x faster than traditional data stacks
-          </div>
+      {/* Hero Section */}
+      <section className="pt-40 pb-24 text-center">
+        <div className="max-w-5xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 dark:from-primary-400 dark:via-accent-400 dark:to-primary-500 text-transparent bg-clip-text">
+              Local-First Data & AI
+            </h1>
+            <p className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
+              A Complete Reference Implementation
+            </p>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
+              Five open-source projects demonstrating how to build a complete local-first analytics stack—from data ingestion to AI-powered insights—all running on your laptop.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link
+                href="#architecture"
+                className="px-6 py-3 rounded-lg bg-primary-600 dark:bg-primary-500 text-white font-semibold hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors"
+              >
+                See How They Connect
+              </Link>
+              <Link
+                href="#projects"
+                className="px-6 py-3 rounded-lg border-2 border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 font-semibold hover:bg-primary-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                Explore Projects
+              </Link>
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-500">
+              Archived November 2025 • MIT Licensed • Fork & Build Your Own
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Enterprise Data Pipelines
-            <br />
-            <span className="gradient-text">in 30 Seconds</span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-            Local-first data pipeline toolkit combining{' '}
-            <span className="font-semibold text-primary-600 dark:text-primary-400">DLT</span>,{' '}
-            <span className="font-semibold text-orange-600 dark:text-orange-400">dbt</span>, and{' '}
-            <span className="font-semibold text-yellow-600 dark:text-yellow-400">DuckDB</span>.
-            Zero cloud dependencies, enterprise-grade processing.
+      {/* Architecture Section */}
+      <section id="architecture" className="py-20 bg-white dark:bg-gray-950">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+            How The Ecosystem Fits Together
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-3xl mx-auto">
+            Each project builds on the foundation to create a complete local-first analytics platform
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <Link
-              href="#demo"
-              className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-semibold text-lg transition-colors flex items-center gap-2 shadow-xl hover:shadow-2xl"
+          <div className="space-y-6">
+            {/* Layer 1: Foundation */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col md:flex-row items-center gap-6 p-6 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 rounded-xl"
             >
-              Try Live Demo
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="https://github.com/sbdk-dev/sbdk-dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 rounded-lg font-semibold text-lg transition-colors flex items-center gap-2"
-            >
-              <Github className="w-5 h-5" />
-              View on GitHub
-            </Link>
-          </div>
-
-          {/* Quick stats */}
-          <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-            {[
-              { label: 'Setup Time', value: '30 sec', icon: Zap },
-              { label: 'Memory', value: '<500MB', icon: Gauge },
-              { label: 'Ops/sec', value: '396K+', icon: Workflow },
-              { label: 'Cloud Cost', value: '$0', icon: DollarSign },
-            ].map((stat, idx) => {
-              const Icon = stat.icon
-              return (
-                <div key={idx} className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <Icon className="w-5 h-5 text-primary-600 dark:text-primary-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400">{stat.value}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Problem Statement Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Traditional Data Stacks Are <span className="text-red-600">Painfully Slow</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Setting up a modern data pipeline shouldn&apos;t take 4+ hours of wrestling with cloud configs
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: Clock,
-                title: 'Hours of Setup Time',
-                description: 'Configure AWS/GCP, manage credentials, deploy infrastructure, debug networking issues...',
-              },
-              {
-                icon: Cloud,
-                title: 'Cloud Lock-In',
-                description: 'Forced to use specific vendors, pay egress fees, and deal with vendor-specific quirks',
-              },
-              {
-                icon: DollarSign,
-                title: 'Unpredictable Costs',
-                description: 'Development environments rack up cloud bills. Data egress charges surprise you at month-end.',
-              },
-            ].map((problem, idx) => {
-              const Icon = problem.icon
-              return (
-                <div key={idx} className="p-6 bg-white dark:bg-gray-800 rounded-lg border border-red-200 dark:border-red-900/30">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-red-100 dark:bg-red-900/20">
-                      <Icon className="w-6 h-6 text-red-600 dark:text-red-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold mb-2">{problem.title}</h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">{problem.description}</p>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Solution / How It Works Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text">3 Steps</span> to Production-Ready Pipelines
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              No cloud setup. No credentials. Just code.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                step: '01',
-                title: 'Install & Initialize',
-                description: 'One command gets you a complete ETL sandbox with DLT, dbt, and DuckDB integrated.',
-                code: 'uv pip install sbdk-dev\nsbdk init my-pipeline',
-              },
-              {
-                step: '02',
-                title: 'Run Your Pipeline',
-                description: 'Execute the full pipeline locally. Watch data flow through ingestion, transformation, and analytics.',
-                code: 'sbdk run',
-              },
-              {
-                step: '03',
-                title: 'Query & Analyze',
-                description: 'Query your data with DuckDB. Sub-second performance on millions of rows, all running locally.',
-                code: 'sbdk query "SELECT * FROM users"',
-              },
-            ].map((step, idx) => (
-              <div key={idx} className="relative">
-                <div className="text-6xl font-bold text-primary-100 dark:text-primary-950 mb-4">{step.step}</div>
-                <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{step.description}</p>
-                <div className="bg-gray-900 rounded-lg p-4 font-mono text-sm text-green-400">
-                  {step.code.split('\n').map((line, lidx) => (
-                    <div key={lidx}>
-                      <span className="text-gray-500">$ </span>
-                      {line}
-                    </div>
-                  ))}
-                </div>
+              <div className="flex-shrink-0 w-16 h-16 bg-blue-600 dark:bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                1
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Foundation: SBDK.dev</h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  The core framework providing local-first data pipelines with DLT (ingestion), dbt (transformation), and DuckDB (analytics). Everything else builds on this foundation.
+                </p>
+              </div>
+            </motion.div>
 
-      {/* Key Capabilities Section */}
-      <section id="features" className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              What You Can <span className="gradient-text">Actually Do</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Capabilities that unlock new possibilities for data teams
+            {/* Layer 2: Intelligence */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="flex flex-col md:flex-row items-center gap-6 p-6 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 rounded-xl ml-0 md:ml-12"
+            >
+              <div className="flex-shrink-0 w-16 h-16 bg-purple-600 dark:bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                2
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Intelligence: Mallard (local-inference)</h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  A DuckDB extension adding ML/AI capabilities. Run zero-shot predictions, generate embeddings, and get feature importance—all in SQL, no separate ML infrastructure needed.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Layer 3: Visualization */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col md:flex-row items-center gap-6 p-6 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 rounded-xl ml-0 md:ml-24"
+            >
+              <div className="flex-shrink-0 w-16 h-16 bg-green-600 dark:bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                3
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Visualization: Semantic Tracer</h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  Visualizes dbt semantic layers with interactive lineage graphs. Understand how your metrics, dimensions, and entities connect. Built with Tauri and React Flow.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Layer 4: Natural Language */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col md:flex-row items-center gap-6 p-6 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-950 dark:to-orange-900 rounded-xl ml-0 md:ml-36"
+            >
+              <div className="flex-shrink-0 w-16 h-16 bg-orange-600 dark:bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                4
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Conversational: Local AI Analyst</h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  Ask questions in natural language, get answers based on real query results with statistical rigor. Execution-first approach prevents AI fabrication with confidence intervals and significance testing.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Layer 5: Integration */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-col md:flex-row items-center gap-6 p-6 bg-gradient-to-r from-pink-50 to-pink-100 dark:from-pink-950 dark:to-pink-900 rounded-xl ml-0 md:ml-48"
+            >
+              <div className="flex-shrink-0 w-16 h-16 bg-pink-600 dark:bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                5
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold mb-2">Integration: knowDB</h3>
+                <p className="text-gray-700 dark:text-gray-300">
+                  Connects everything to AI assistants via MCP (Model Context Protocol). Query your data through Claude Desktop or ChatGPT Desktop with automatic dbt model syncing and semantic layer integration.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="mt-12 p-6 bg-gray-100 dark:bg-gray-800 rounded-xl">
+            <h3 className="text-xl font-bold mb-3 text-center">The Result</h3>
+            <p className="text-center text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+              A complete stack for building local-first analytics tools. Start with raw data, transform it, analyze it with ML, visualize relationships, and query it conversationally—all without cloud dependencies.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Zap,
-                title: 'Go from idea to insights in 30 seconds',
-                capability: 'Instant pipeline prototyping',
-                description: 'No waiting for cloud resources. Test ideas immediately with hot-reload dev mode.',
-              },
-              {
-                icon: Database,
-                title: 'Process data without cloud dependencies',
-                capability: 'True local-first architecture',
-                description: 'Your data never leaves your machine. Perfect for compliance, sovereignty, or air-gapped environments.',
-              },
-              {
-                icon: GitBranch,
-                title: 'Build production pipelines with best practices',
-                capability: 'Complete ETL stack',
-                description: 'DLT for ingestion, dbt for modeling, DuckDB for analytics. Industry-standard tools, zero config.',
-              },
-              {
-                icon: Code,
-                title: 'Iterate 10x faster with visual feedback',
-                capability: 'Real-time pipeline visualization',
-                description: 'Watch data flow through your pipeline. Catch errors instantly. Debug with confidence.',
-              },
-              {
-                icon: Gauge,
-                title: 'Run enterprise queries on a laptop',
-                capability: 'Sub-500MB memory footprint',
-                description: '396K+ operations per second. Process millions of rows without cloud-scale hardware.',
-              },
-              {
-                icon: Shield,
-                title: 'Ship with confidence',
-                capability: 'Production-grade error handling',
-                description: 'Clear error messages. Validation at every step. Professional CLI experience.',
-              },
-            ].map((capability, idx) => {
-              const Icon = capability.icon
-              return (
-                <div key={idx} className="p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 card-hover">
-                  <Icon className="w-8 h-8 text-primary-600 dark:text-primary-400 mb-4" />
-                  <div className="text-xs font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wider mb-2">
-                    {capability.capability}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{capability.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">{capability.description}</p>
-                </div>
-              )
-            })}
-          </div>
         </div>
       </section>
 
-      {/* Live Demo Section - Original Components */}
-      <section id="demo" className="py-20">
+      {/* Projects Section */}
+      <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              See It <span className="gradient-text">In Action</span>
+              Five Projects, One Ecosystem
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Watch a complete pipeline run from ingestion to analytics
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Each project is a complete, production-quality reference implementation. Fork any or all to build your own local-first data tools.
             </p>
           </div>
 
-          {/* Pipeline Visualization */}
-          <div className="mb-12">
-            <PipelineVisualizer autoPlay={false} />
-          </div>
-
-          {/* Interactive Terminal */}
-          <div className="mb-12">
-            <InteractiveTerminal />
-          </div>
-
-          {/* Data Visualization */}
-          <DataTableViewer />
-        </div>
-      </section>
-
-      {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Perfect For
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Teams who value speed, simplicity, and sovereignty
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Data Engineers',
-                description: 'Tired of cloud complexity and want to iterate faster on local development.',
-                benefits: ['Instant feedback loops', 'No cloud costs during dev', 'Full control over data'],
-                icon: Code,
-              },
-              {
-                title: 'Analytics Teams',
-                description: 'Need enterprise-grade analytics without enterprise infrastructure.',
-                benefits: ['Sub-second query performance', 'Familiar SQL interface', 'Easy data modeling'],
-                icon: TrendingUp,
-              },
-              {
-                title: 'Startups',
-                description: 'Want to avoid cloud vendor lock-in and keep infrastructure costs low.',
-                benefits: ['Zero ongoing costs', 'No cloud dependencies', 'Deploy anywhere'],
-                icon: Zap,
-              },
-              {
-                title: 'Enterprises',
-                description: 'Require data sovereignty and local processing for compliance.',
-                benefits: ['Data stays on-premise', 'Full audit trail', 'No data egress'],
-                icon: Shield,
-              },
-            ].map((useCase, idx) => {
-              const Icon = useCase.icon
-              return (
-                <div
-                  key={idx}
-                  className="p-8 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
-                >
-                  <Icon className="w-8 h-8 text-primary-600 dark:text-primary-400 mb-4" />
-                  <h3 className="text-2xl font-bold mb-3">{useCase.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{useCase.description}</p>
+          <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            {projects.map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <h2 className="text-3xl font-bold">{project.name}</h2>
+                  {project.repo !== 'sbdk-dev/sbdk-dev' && (
+                    <span className="px-3 py-1 text-xs font-semibold bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">
+                      ARCHIVED
+                    </span>
+                  )}
+                </div>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">{project.description}</p>
+                <div className="mb-6">
+                  <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase mb-3">Key Features</h3>
                   <ul className="space-y-2">
-                    {useCase.benefits.map((benefit, bidx) => (
-                      <li key={bidx} className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
-                        <Check className="w-4 h-4 text-green-600 dark:text-green-400 flex-shrink-0" />
-                        {benefit}
+                    {project.features.map((feature, j) => (
+                      <li key={j} className="flex items-start gap-2">
+                        <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Built for Performance
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400">
-              Real metrics from production usage
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { metric: '480x', label: 'Faster Setup', sublabel: 'vs traditional stacks' },
-              { metric: '30s', label: 'To First Pipeline', sublabel: 'From zero to running' },
-              { metric: '396K+', label: 'Ops/Second', sublabel: 'DuckDB performance' },
-              { metric: '<500MB', label: 'Memory Usage', sublabel: 'Full pipeline running' },
-            ].map((stat, idx) => (
-              <div key={idx} className="text-center p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                <div className="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                  {stat.metric}
+                <div className="flex gap-3">
+                  <Link
+                    href={`https://github.com/${project.repo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    View Code
+                  </Link>
+                  <Link
+                    href={`https://github.com/${project.repo}/fork`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                  >
+                    Fork It
+                  </Link>
                 </div>
-                <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                  {stat.label}
-                </div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
-                  {stat.sublabel}
-                </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Comparison Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              SBDK vs <span className="gradient-text">The Alternatives</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400">
-              See how SBDK compares to traditional approaches
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
-              <thead>
-                <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <th className="text-left p-4 font-semibold">Feature</th>
-                  <th className="text-center p-4 font-semibold bg-primary-50 dark:bg-primary-950">
-                    <div className="flex items-center justify-center gap-2">
-                      <Logo className="w-5 h-5" />
-                      SBDK
-                    </div>
-                  </th>
-                  <th className="text-center p-4 font-semibold">Cloud ETL</th>
-                  <th className="text-center p-4 font-semibold">Custom Scripts</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: 'Setup Time', sbdk: '30 seconds', cloud: '4+ hours', custom: '2-3 days' },
-                  { feature: 'Cloud Required', sbdk: false, cloud: true, custom: false },
-                  { feature: 'Monthly Cost', sbdk: '$0', cloud: '$500+', custom: '$0' },
-                  { feature: 'Data Sovereignty', sbdk: true, cloud: false, custom: true },
-                  { feature: 'Visual Pipeline UI', sbdk: true, cloud: true, custom: false },
-                  { feature: 'Hot-Reload Dev', sbdk: true, cloud: false, custom: false },
-                  { feature: 'Production Ready', sbdk: true, cloud: true, custom: false },
-                  { feature: 'Learning Curve', sbdk: 'Low', cloud: 'High', custom: 'Medium' },
-                ].map((row, idx) => (
-                  <tr key={idx} className="border-b border-gray-200 dark:border-gray-700">
-                    <td className="p-4 font-medium">{row.feature}</td>
-                    <td className="p-4 text-center bg-primary-50 dark:bg-primary-950">
-                      {typeof row.sbdk === 'boolean' ? (
-                        row.sbdk ? <Check className="w-5 h-5 text-green-600 mx-auto" /> : <X className="w-5 h-5 text-red-600 mx-auto" />
-                      ) : (
-                        <span className="font-semibold text-primary-700 dark:text-primary-300">{row.sbdk}</span>
-                      )}
-                    </td>
-                    <td className="p-4 text-center text-gray-600 dark:text-gray-400">
-                      {typeof row.cloud === 'boolean' ? (
-                        row.cloud ? <Check className="w-5 h-5 text-green-600 mx-auto" /> : <X className="w-5 h-5 text-red-600 mx-auto" />
-                      ) : (
-                        row.cloud
-                      )}
-                    </td>
-                    <td className="p-4 text-center text-gray-600 dark:text-gray-400">
-                      {typeof row.custom === 'boolean' ? (
-                        row.custom ? <Check className="w-5 h-5 text-green-600 mx-auto" /> : <X className="w-5 h-5 text-red-600 mx-auto" />
-                      ) : (
-                        row.custom
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-20">
+      {/* Getting Started Section */}
+      <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Frequently Asked Questions
-            </h2>
-          </div>
-
-          <div className="space-y-6">
-            {[
-              {
-                q: 'Is SBDK production-ready?',
-                a: 'Yes! SBDK uses battle-tested tools (DLT, dbt, DuckDB) that power production data pipelines at thousands of companies. The CLI provides professional error handling, validation, and clear error messages.',
-              },
-              {
-                q: 'Can I use SBDK with cloud data sources?',
-                a: 'Absolutely. SBDK supports all DLT sources (APIs, databases, SaaS apps). You ingest from cloud sources but process and analyze locally, avoiding data egress costs.',
-              },
-              {
-                q: 'How does local processing scale?',
-                a: 'DuckDB can process millions of rows in seconds on a laptop. For truly massive datasets (100GB+), you can still use SBDK for development and deploy to a larger local or on-prem machine.',
-              },
-              {
-                q: 'Will you always offer a free tier?',
-                a: 'Yes. SBDK core is MIT licensed and will always be free and open source. Future Team and Enterprise tiers will add collaboration features, but the core toolkit remains free forever.',
-              },
-              {
-                q: 'What if I need cloud deployment later?',
-                a: 'Your SBDK pipelines are just Python code using standard tools. You can deploy them anywhere: Docker containers, Kubernetes, cloud VMs, or serverless functions.',
-              },
-              {
-                q: 'How is this different from running dbt locally?',
-                a: 'SBDK gives you the complete stack (ingestion + transformation + analytics) with one command. No juggling multiple tools, configs, or databases. Everything works together out of the box.',
-              },
-            ].map((faq, idx) => (
-              <div key={idx} className="p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
-                <div className="flex items-start gap-3">
-                  <HelpCircle className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="text-lg font-bold mb-2">{faq.q}</h3>
-                    <p className="text-gray-600 dark:text-gray-400">{faq.a}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary-600 via-accent-600 to-primary-700 dark:from-primary-800 dark:via-accent-800 dark:to-primary-900">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Ready to Build <span className="text-yellow-300">480x Faster?</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-6">
+            Ready to Build?
           </h2>
-          <p className="text-xl text-blue-50 mb-8">
-            Join data engineers who&apos;ve ditched cloud complexity for local-first simplicity
+          <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12">
+            These projects are reference implementations showing how to build local-first data tools. Here's how to get started:
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Link
-              href="https://github.com/sbdk-dev/sbdk-dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-white hover:bg-gray-100 text-primary-700 rounded-lg font-semibold text-lg transition-colors flex items-center gap-2 shadow-xl"
-            >
-              Get Started Free
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/docs/home"
-              className="px-8 py-4 bg-transparent hover:bg-white/10 text-white border-2 border-white rounded-lg font-semibold text-lg transition-colors flex items-center gap-2"
-            >
-              <Github className="w-5 h-5" />
-              View Documentation
-            </Link>
+          <div className="space-y-8">
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-primary-600 dark:bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
+                1
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Pick a Project</h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Start with SBDK.dev for the foundation, or choose any project that matches your needs. Each works standalone or as part of the ecosystem.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-primary-600 dark:bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
+                2
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Fork & Explore</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-3">
+                  Fork the repository, read the README, explore the code. Each project includes comprehensive documentation and examples.
+                </p>
+                <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm">
+                  <div className="text-gray-600 dark:text-gray-400"># Example: SBDK.dev</div>
+                  <div>git clone https://github.com/YOUR-USERNAME/sbdk-dev</div>
+                  <div>cd sbdk-dev</div>
+                  <div>pip install -e .</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-primary-600 dark:bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
+                3
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Adapt & Extend</h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  These are reference implementations—take what works, modify what doesn't, and build your own tools. All projects are MIT licensed for maximum flexibility.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-primary-600 dark:bg-primary-500 rounded-full flex items-center justify-center text-white font-bold">
+                4
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Share Your Work</h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Built something cool? Share it! Open an issue on the original repo to showcase your fork or derivative work.
+                </p>
+              </div>
+            </div>
           </div>
 
-          <div className="inline-block bg-gray-900 dark:bg-black/40 rounded-lg px-6 py-4 border border-white/20">
-            <code className="text-green-300 text-lg font-mono">uv pip install sbdk-dev && sbdk init</code>
+          <div className="mt-12 p-6 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950 rounded-xl border border-primary-200 dark:border-primary-800">
+            <h3 className="text-lg font-bold mb-2">Why These Projects Were Archived</h3>
+            <p className="text-gray-700 dark:text-gray-300 text-sm">
+              These projects represent complete, production-quality implementations of local-first data tools. They're archived as reference implementations because they demonstrate proven patterns and best practices. Each codebase is stable, documented, and ready to fork—perfect for learning, adapting, or building upon for your own use cases.
+            </p>
           </div>
         </div>
       </section>
@@ -563,34 +396,8 @@ export default function HomePage() {
               <Logo className="w-6 h-6" />
               <span className="font-bold text-lg">SBDK.dev</span>
             </div>
-
-            <div className="flex items-center gap-6">
-              <Link
-                href="https://github.com/sbdk-dev/sbdk-dev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >
-                GitHub
-              </Link>
-              <Link
-                href="/pricing"
-                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >
-                Pricing
-              </Link>
-              <a
-                href="https://github.com/sbdk-dev/sbdk-dev/blob/main/LICENSE"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-              >
-                MIT License
-              </a>
-            </div>
-
             <div className="text-sm text-gray-600 dark:text-gray-400">
-              © 2025 SBDK. Open Source.
+              © 2025 SBDK. MIT Licensed.
             </div>
           </div>
         </div>

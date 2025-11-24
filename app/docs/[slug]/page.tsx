@@ -27,6 +27,10 @@ const VALID_SLUGS = [
   'build-binary',
   'ci-cd-guide',
   'github-release-workflow',
+  'knowdb',
+  'local-ai-analyst',
+  'local-inference',
+  'semantic-tracer',
 ]
 
 // Map URL slugs to display titles and wiki slugs
@@ -45,6 +49,10 @@ const SLUG_MAP: Record<string, { title: string; wikiSlug: string }> = {
   'build-binary': { title: 'Build Binary', wikiSlug: 'Build-Binary' },
   'ci-cd-guide': { title: 'CI/CD Guide', wikiSlug: 'CI-CD-Guide' },
   'github-release-workflow': { title: 'GitHub Release Workflow', wikiSlug: 'GitHub-Release-Workflow' },
+  'knowdb': { title: 'knowDB', wikiSlug: 'knowdb' },
+  'local-ai-analyst': { title: 'Local AI Analyst', wikiSlug: 'local-ai-analyst' },
+  'local-inference': { title: 'Local Inference', wikiSlug: 'local-inference' },
+  'semantic-tracer': { title: 'Semantic Tracer', wikiSlug: 'semantic-tracer' },
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
