@@ -95,40 +95,139 @@ export default function HomePage() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="pt-40 pb-24 text-center">
-        <div className="max-w-5xl mx-auto px-4">
+      <section className="pt-40 pb-24">
+        <div className="max-w-6xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
+            className="text-center"
           >
             <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-primary-600 via-accent-500 to-primary-700 dark:from-primary-400 dark:via-accent-400 dark:to-primary-500 text-transparent bg-clip-text">
-              Local-First Data & AI
+              Production-Ready Examples for Building Local-First Data Tools
             </h1>
-            <p className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-              A Complete Reference Implementation
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-4xl mx-auto">
+              Five complete, working implementations showing how to build data pipelines, ML-in-SQL, semantic layers, and AI analytics—without cloud dependencies.
             </p>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-3xl mx-auto">
-              Five open-source projects demonstrating how to build a complete local-first analytics stack—from data ingestion to AI-powered insights—all running on your laptop.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link
-                href="#architecture"
-                className="px-6 py-3 rounded-lg bg-primary-600 dark:bg-primary-500 text-white font-semibold hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors"
-              >
-                See How They Connect
-              </Link>
+
+            {/* Value Props Grid */}
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+                <div className="text-4xl mb-3">📦</div>
+                <h3 className="font-bold text-lg mb-2">Complete Codebases</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Not tutorials or docs—actual production-quality code you can run, study, and fork.
+                </p>
+              </div>
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+                <div className="text-4xl mb-3">🔗</div>
+                <h3 className="font-bold text-lg mb-2">Working Examples</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  See how DLT, dbt, DuckDB, Rust extensions, and MCP integration actually fit together.
+                </p>
+              </div>
+              <div className="p-6 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
+                <div className="text-4xl mb-3">⚡</div>
+                <h3 className="font-bold text-lg mb-2">Skip Months of R&D</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Proven patterns for local-first architecture, tested and documented. Just fork and adapt.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <Link
                 href="#projects"
-                className="px-6 py-3 rounded-lg border-2 border-primary-600 dark:border-primary-400 text-primary-600 dark:text-primary-400 font-semibold hover:bg-primary-50 dark:hover:bg-gray-800 transition-colors"
+                className="px-8 py-4 rounded-lg bg-primary-600 dark:bg-primary-500 text-white text-lg font-semibold hover:bg-primary-700 dark:hover:bg-primary-600 transition-colors shadow-lg"
               >
-                Explore Projects
+                Explore the 5 Projects
+              </Link>
+              <Link
+                href="#use-cases"
+                className="px-8 py-4 rounded-lg border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-lg font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                See Use Cases
               </Link>
             </div>
             <p className="text-sm text-gray-500 dark:text-gray-500">
-              Archived November 2025 • MIT Licensed • Fork & Build Your Own
+              Open source • MIT Licensed • Archived as reference implementations (Nov 2025)
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Use Cases Section - Who is this for? */}
+      <section id="use-cases" className="py-20 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+            Who Should Use These?
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400 text-center mb-12 max-w-3xl mx-auto">
+            Whether you're building similar tools or learning modern data engineering, these implementations save you months of research.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-8 bg-white dark:bg-gray-800 rounded-xl"
+            >
+              <h3 className="text-2xl font-bold mb-4">Building Local-First Tools?</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Stop piecing together scattered docs. See complete working examples of:
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
+                  <span>How to structure a data pipeline with DLT + dbt + DuckDB</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
+                  <span>Building Rust extensions for DuckDB (ML/AI in SQL)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
+                  <span>MCP server integration for AI assistants</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
+                  <span>Statistical rigor in AI-powered analytics</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="p-8 bg-white dark:bg-gray-800 rounded-xl"
+            >
+              <h3 className="text-2xl font-bold mb-4">Learning Modern Data Stack?</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Skip tutorials. Learn from production-quality code that shows:
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
+                  <span>Real architecture patterns, not toy examples</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
+                  <span>How components actually connect and work together</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
+                  <span>Error handling, testing, and deployment practices</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <ArrowRight className="w-5 h-5 text-primary-600 dark:text-primary-400 flex-shrink-0 mt-1" />
+                  <span>Why certain tech choices were made (comments explain decisions)</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -347,7 +446,7 @@ export default function HomePage() {
                 </p>
                 <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 font-mono text-sm">
                   <div className="text-gray-600 dark:text-gray-400"># Example: SBDK.dev</div>
-                  <div>git clone https://github.com/YOUR-USERNAME/sbdk-dev</div>
+                  <div>git clone https://github.com/sbdk-dev/sbdk-dev</div>
                   <div>cd sbdk-dev</div>
                   <div>pip install -e .</div>
                 </div>
@@ -379,10 +478,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="mt-12 p-6 bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950 dark:to-accent-950 rounded-xl border border-primary-200 dark:border-primary-800">
-            <h3 className="text-lg font-bold mb-2">Why These Projects Were Archived</h3>
-            <p className="text-gray-700 dark:text-gray-300 text-sm">
-              These projects represent complete, production-quality implementations of local-first data tools. They're archived as reference implementations because they demonstrate proven patterns and best practices. Each codebase is stable, documented, and ready to fork—perfect for learning, adapting, or building upon for your own use cases.
+          <div className="mt-12 p-6 bg-blue-50 dark:bg-blue-950 rounded-xl border-2 border-blue-200 dark:border-blue-800">
+            <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-blue-100">Why These Are Archived</h3>
+            <p className="text-blue-800 dark:text-blue-200 text-sm leading-relaxed">
+              These are <strong>complete, stable reference implementations</strong>—not active products. They're archived because they're <em>done</em>: production-quality code demonstrating proven patterns. Perfect for forking, learning, or adapting for your own projects.
             </p>
           </div>
         </div>
